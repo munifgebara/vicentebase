@@ -1,0 +1,51 @@
+<div class="container">
+  <form [formGroup]="loginForm">
+
+    <div class="alert {{erro.cssClass}}" role="alert" *ngIf="erro.show">
+      <strong>{{erro.message}}</strong> {{erro.description}}
+      <a (click)="erro.show = false" style="float: right;   margin-right: -10px;  margin-top: -10px;">x</a>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 margin-bottom">
+        <label>Login:</label>
+        <input type="text" id="idnome" name="nome" placeholder="email@organizacao" formControlName="loginInput" class="form-control"
+        />
+
+        <div class="alert alert-danger" *ngIf="!loginForm.controls['loginInput'].valid && loginForm.controls['loginInput'].touched"
+          style="margin-top:10px">
+          Email inválido, por favor informe um email válido!
+        </div>
+
+      </div>
+
+      <div class="col-sm-12 margin-bottom">
+        <label>Senha:</label>
+        <input type="password" id="idsenha" name="senha" placeholder="Senha" formControlName="senhaInput" class="form-control" />
+
+        <div class="alert alert-danger" *ngIf="!loginForm.controls['senhaInput'].valid && loginForm.controls['senhaInput'].touched"
+          style="margin-top:10px">
+          Por favor informe uma senha!
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 text-left">
+<!--        <button type="button" class="btn btn-warning" disabled="true">
+          <i class="fas fa-key"></i> Recuperar Senha
+        </button> -->
+      </div>
+      <div class="col-sm-6 text-right">
+<!--        <button type="button" class="btn btn-info" [disabled]="!loginForm.valid" (click)="criarUsuario()" >
+          <i class="fas fa-user-plus"></i> Criar Usuário
+        </button> -->
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid" (click)="logar()">
+          <i class="fas fa-sign-in-alt"></i> Logar
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

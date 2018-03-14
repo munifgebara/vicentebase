@@ -1,0 +1,41 @@
+<div *ngIf="entidade">
+  <div *ngIf="!aberto">
+    <button type="button" class="btn btn-info" (click)="abrir()">Mostrar Atributos do Sistema</button>
+  </div>
+  <div *ngIf="aberto">
+    <button type="button" class="btn btn-info" (click)="fechar()">Esconder Atributos do Sistema</button>
+    <div class="alert alert-info" role="alert">
+      <div>
+        <span>ID: </span>{{entidade.id}}
+      </div>
+      <div>
+        <span>Organização: </span>{{entidade.oi}}
+      </div>
+      <div>
+        <span>Grupo: </span>{{entidade.gi}}
+      </div>
+      <div>
+        <span>Usuário: </span>{{entidade.ui}}
+      </div>
+      <div>
+        <span>Direitos: </span>{{entidade.stringRights}}
+      </div>
+      <div>
+        <span>Extra: </span>{{entidade.extra}}
+      </div>
+      <div>
+        <span>Data Criação: </span>{{entidade.cd}}
+      </div>
+      <div>
+        <span>Data Atualização: </span>{{entidade.ud}} {{entidade.ud-entidade.cd}}
+      </div>
+      <div>
+        <span>Ativo: </span>{{entidade.active}}
+      </div>
+      <div>
+        <span>Versão: </span>{{entidade.version}}
+      </div>
+    </div>
+  </div>
+
+</div>

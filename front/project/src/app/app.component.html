@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Empleados</a>
+    <span *ngIf="loginService.logado">
+        <span class="navbar-brand"> Login:</span>
+        <span class="navbar-brand">
+            <span class="form-control ">{{loginService.token.usuario.login}} </span>
+        </span>
+        <span class="navbar-brand"> Organização:</span>
+        <span class="navbar-brand">
+            <span class="form-control "> {{loginService.token.usuario.organizacao.nome}}</span>
+        </span>
+        <span class="navbar-brand"> Grupo Corrente:</span>
+        <span class="navbar-brand">
+            <select [compareWith]="byId" [ngModel]="loginService.grupoAtual" (ngModelChange)="onValorChange($event)" class="form-control">
+                <option value> Nenhum </option>
+                <option *ngFor="let opcao of loginService.token.usuario.grupos" [ngValue]="opcao">{{opcao['codigo']}}-{{opcao['nome']}} </option>
+            </select>
+        </span>
+
+        <a class="btn btn-danger" style="margin-right : 10px" href="#">
+            <i class="fas fa-sign-out-alt" (click)="sair()"></i>Sair</a>
+    </span>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+
+                    <li class="nav-item" *ngFor="let item of menu">
+                        <a class="nav-link {{item.active?'active':''}}" [routerLink]="[item.link]" (click)="onMenuClick(item)" *ngIf="item.link">
+                            <i class="{{item.iconeTipo}} {{item.icone}}"></i> {{item.label}}
+                        </a>
+                        <a class="nav-link {{item.active?'active':''}}" (click)="onMenuPaiClick(item)" *ngIf="!item.link">
+                            <i class="{{item.iconeTipo}} {{item.icone}}"></i> {{item.label}}
+                            <i class="fas fa-angle-down " style="float:right;margin-top: 5px;"></i>
+                        </a>
+                        <ul class="nav flex-column" *ngIf="item.active">
+                            <li class="nav-item" *ngFor="let subItem of item.subItens">
+                                <a class="nav-link subItem {{subItem.active?'active':''}}" (click)="onSubMenuClick(item,subItem)" [routerLink]="[subItem.link]">
+                                    <i class="{{subItem.iconeTipo}} {{subItem.icone}}"></i> {{subItem.label}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

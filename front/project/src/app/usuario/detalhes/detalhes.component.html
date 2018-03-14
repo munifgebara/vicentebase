@@ -1,0 +1,54 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 28/02/2018 01:55:26 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container">
+
+  <div *ngIf="!selecionado">
+    Carregando....
+  </div>
+  <div *ngIf="selecionado">
+
+    <h2>{{ selecionado.login| uppercase }}</h2>
+
+    <div class="row">
+
+  <div class="col-sm-12 margin-bottom">
+    <label>LOGIN:</label>
+      <input type="text" id="idlogin" name="login" placeholder="LOGIN" [(ngModel)]="selecionado.login" class="form-control" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>SENHA:</label>
+      <input type="text" id="idsenha" name="senha" placeholder="SENHA" [(ngModel)]="selecionado.senha" class="form-control" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>GRUPOS:</label>
+      <vic-many-to-many [(valor)]="selecionado.grupos" [service]="grupoService" atributoLabel="nome" ></vic-many-to-many>
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>ORGANIZACAO:</label>
+      <vic-many-to-one [(valor)]="selecionado.organizacao" [service]="organizacaoService" atributoLabel="nome" ></vic-many-to-one>
+  </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <button type="button" class="btn btn-danger" (click)="excluir()" *ngIf="selecionado.version !== null">
+          <i class="far fa-trash-alt"></i> Excluir
+        </button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button type="button" class="btn btn-warning" (click)="cancelar()">
+          <i class="far fa-times-circle"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="salvar()">
+          <i class="far fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{erro|json}}
+    </div>
+  </div>
+

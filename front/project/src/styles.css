@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+
+.nav-item{
+    border-bottom: 1px solid #DCDCDC;
+}
+.sidebar{
+    padding: 0px;
+}
+
+.nav-item a{
+    color: #343a40;
+}
+
+.nav-item a:hover{
+    background: #6C7B8B;
+    color: white;
+}
+
+.active{
+    background: #6C7B8B;
+    color: white !important;
+}

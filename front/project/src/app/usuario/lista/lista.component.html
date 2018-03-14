@@ -1,0 +1,18 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 28/02/2018 01:55:26 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<h2>Lista {{resposta.quantity}} </h2>
+<div class="row padding-bottom-20">
+    <div class="col-sm-6">
+        <input type="text" id="inPesquisa" name="pesquisa" placeholder="Pesquisa" class="form-control" [(ngModel)]="pesquisa" (keypress)="verificaEnter($event)"/>
+    </div>
+    <div class="col-sm-3" >
+        <button type="button" class="btn btn-info" (click)="pesquisar()">
+            <i class="fas fa-search"></i> Pesquisar </button>
+    </div>
+
+    <div class="col-sm-3 text-right">
+        <button type="button" class="btn btn-success" (click)="novo()">
+            <i class="far fa-file"></i> Novo</button>
+    </div>
+</div>
+<vic-tabela [(dados)]="resposta" [colunas]="colunas" (acao)="goDetalhes($event)"></vic-tabela>

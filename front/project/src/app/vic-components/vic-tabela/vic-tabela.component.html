@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <span *ngIf="selecionaColunas">
+    <span *ngFor="let coluna of colunas"  style="padding-right: 10px;">
+      <input type="checkbox" name="tt" [(ngModel)]="coluna.active" (change)="mudouColuna(coluna)" style="margin-right: 5px">{{coluna.label}}
+    </span>
+  </span>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th *ngIf="todasApagadas()">
+          Selecione uma coluna.
+        </th>
+        <th *ngFor="let coluna of colunasAtivas()">{{coluna.label}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dado of dados.values">
+        <td (click)="onClick(dado.id)" *ngFor="let coluna of colunasAtivas()">{{resolve(dado,coluna.field)}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="navbar-brand">
+    <span class="form-control" *ngIf="dados.hasMore" (click)="carregaMais()"> Carregar mais registros</span>
+  </span>
+
+</div>

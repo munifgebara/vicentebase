@@ -1,0 +1,44 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 28/02/2018 01:55:26 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container">
+
+  <div *ngIf="!selecionado">
+    Carregando....
+  </div>
+  <div *ngIf="selecionado">
+
+    <h2>{{ selecionado.nome| uppercase }}</h2>
+
+    <div class="row">
+
+  <div class="col-sm-12 margin-bottom">
+    <label>NOME:</label>
+      <input type="text" id="idnome" name="nome" placeholder="NOME" [(ngModel)]="selecionado.nome" class="form-control" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>CODIGO:</label>
+      <input type="text" id="idcodigo" name="codigo" placeholder="CODIGO" [(ngModel)]="selecionado.codigo" class="form-control" />
+  </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <button type="button" class="btn btn-danger" (click)="excluir()" *ngIf="selecionado.version !== null">
+          <i class="far fa-trash-alt"></i> Excluir
+        </button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button type="button" class="btn btn-warning" (click)="cancelar()">
+          <i class="far fa-times-circle"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="salvar()">
+          <i class="far fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{erro|json}}
+    </div>
+  </div>
+

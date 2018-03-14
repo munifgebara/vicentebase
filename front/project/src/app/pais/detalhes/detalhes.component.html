@@ -1,0 +1,45 @@
+<!-- Arquivo gerado utilizando VICGERADOR por anderson as 13/03/2018 15:19:34 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container">
+
+  <div *ngIf="!selecionado">
+    Carregando....
+  </div>
+  <div *ngIf="selecionado">
+      <div class="alert {{msg.cssClass}}" role="alert" *ngIf="msg.show">
+        <strong>{{msg.message}}</strong> {{msg.description}}
+        <a (click)="msg.show = false" style="float: right; margin-right: -10px; margin-top: -10px;cursor: pointer;">x</a>
+      </div>
+    <h2>{{ selecionado.nome| uppercase }}</h2>
+
+<form [formGroup]="detalhesForm">
+    <div class="row">
+
+  <div class="col-sm-12 margin-bottom">
+    <label>NOME:</label>
+      <input type="text" id="idnome" name="nome" formControlName="nome" placeholder="NOME" [(ngModel)]="selecionado.nome" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+          <div class="alert alert-danger" *ngIf="!detalhesForm.controls['nome'].valid && detalhesForm.controls['nome'].touched" style="margin-top:10px">
+            O campo NOME é obrigatório.
+          </div>  </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <button type="button" class="btn btn-danger" (click)="excluir()" [disabled]="isNew(selecionado)||!canDelete(selecionado)">
+          <i class="far fa-trash-alt"></i> Excluir
+        </button>
+      </div>
+      <div class="col-sm-6 text-right">
+          <button type="button" class="btn btn-info" (click)="voltar()" [disabled]="!detalhesForm.pristine">
+            <i class="fas fa-chevron-circle-left"></i> Voltar
+          </button>        <button type="button" class="btn btn-warning" (click)="cancelar()" [disabled]="detalhesForm.pristine">
+          <i class="far fa-times-circle"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="salvar()"  [disabled]="(notNew(selecionado)&&!canUpdate(selecionado)) || !detalhesForm.valid || detalhesForm.pristine" >
+          <i class="far fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    </form>
+   </div>
+</div>

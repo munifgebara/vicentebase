@@ -1,0 +1,59 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 14/03/2018 06:38:28 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container">
+
+  <div *ngIf="!selecionado">
+    Carregando....
+  </div>
+  <div *ngIf="selecionado">
+
+    <h2>{{ selecionado.quando| uppercase }}</h2>
+
+    <div class="row">
+
+  <div class="col-sm-12 margin-bottom">
+    <label>QUANDO:</label>
+      <input [owlDateTime]="dtQUANDO" [owlDateTimeTrigger]="dtQUANDO" type="text" id="idquando" name="quando" placeholder="quando" [(ngModel)]="selecionado.quando" class="form-control" />
+      <owl-date-time #dtQUANDO></owl-date-time>
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>CLIENTE:</label>
+      <vic-many-to-one [(valor)]="selecionado.cliente" [service]="clienteService" atributoLabel="nome" ></vic-many-to-one>
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="!(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>CLIENTE:</label>
+      <input type="text" id="idcliente" name="cliente" placeholder="CLIENTE" [(ngModel)]="selecionado.cliente.nome" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="selecionado.version!==null   ">
+    <app-movimento-itens [itens]="(selecionado.itens===null?[]:selecionado.itens)" [proprietario]="selecionado"></app-movimento-itens>
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="selecionado.version==null ">
+        <h2>ITENS</h2>
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="salvarImediatamente()" >
+           Para inserir ITEMMOVIMENTO é necessário salvar este MOVIMENTO primeiro. Para salvar imediatamente click aqui.
+        </button>
+  </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <button type="button" class="btn btn-danger" (click)="excluir()" [disabled]="isNew(selecionado)||!canDelete(selecionado)">
+          <i class="far fa-trash-alt"></i> Excluir
+        </button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button type="button" class="btn btn-warning" (click)="cancelar()">
+          <i class="far fa-times-circle"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="salvar()"  [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" >
+          <i class="far fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{erro|json}}
+    </div>

@@ -11,7 +11,6 @@ import java.util.Objects;
  * A Pais.
  */
 @Entity
-@Table(name = "pais")
 @Audited
 public class Pais extends BaseEntity {
 

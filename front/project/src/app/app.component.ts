@@ -69,6 +69,16 @@ export class AppComponent implements OnInit {
 
 
 
+{ link: './produto', iconeTipo: 'fas', icone: 'fa-home', label: 'Produto', active: false },
+
+{ link: './categoria', iconeTipo: 'fas', icone: 'fa-home', label: 'Categoria', active: false },
+
+{ link: './cliente', iconeTipo: 'fas', icone: 'fa-home', label: 'Cliente', active: false },
+
+{ link: './itemmovimento', iconeTipo: 'fas', icone: 'fa-home', label: 'ItemMovimento', active: false },
+
+{ link: './movimento', iconeTipo: 'fas', icone: 'fa-home', label: 'Movimento', active: false },
+
     /* MENU  */
     { link: './principal', iconeTipo: 'fas', icone: 'fa-home', label: 'Principal', active: false },
     {

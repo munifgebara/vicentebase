@@ -23,6 +23,16 @@ import { UsuarioService } from './usuario/usuario.service';
 import { LoginComponent } from './login/login.component';
 import { PietraGuardGuard } from './pietra-guard.guard';
 import { LoginService } from './login/login.service';
+import { ProdutoModule} from './produto/produto.module';
+import { ProdutoService} from './produto/produto.service';
+import { CategoriaModule} from './categoria/categoria.module';
+import { CategoriaService} from './categoria/categoria.service';
+import { ClienteModule} from './cliente/cliente.module';
+import { ClienteService} from './cliente/cliente.service';
+import { ItemMovimentoModule} from './itemmovimento/itemmovimento.module';
+import { ItemMovimentoService} from './itemmovimento/itemmovimento.service';
+import { MovimentoModule} from './movimento/movimento.module';
+import { MovimentoService} from './movimento/movimento.service';
 //app.module.ts1
 
 
@@ -47,6 +57,11 @@ import { LoginService } from './login/login.service';
     OrganizacaoModule,
     UsuarioModule,
 
+    ProdutoModule,
+    CategoriaModule,
+    ClienteModule,
+    ItemMovimentoModule,
+    MovimentoModule,
     //app.module.ts2
     VicComponentsModule,
     AppRoutingModule
@@ -59,6 +74,11 @@ import { LoginService } from './login/login.service';
     PietraGuardGuard,
     LoginService,
     PaisService,
+    ProdutoService,
+    CategoriaService,
+    ClienteService,
+    ItemMovimentoService,
+    MovimentoService,
     //app.module.ts3
   ],
   bootstrap: [AppComponent]

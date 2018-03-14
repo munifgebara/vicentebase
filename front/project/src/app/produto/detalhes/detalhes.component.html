@@ -1,0 +1,52 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 14/03/2018 06:38:28 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container">
+
+  <div *ngIf="!selecionado">
+    Carregando....
+  </div>
+  <div *ngIf="selecionado">
+
+    <h2>{{ selecionado.nome| uppercase }}</h2>
+
+    <div class="row">
+
+  <div class="col-sm-12 margin-bottom">
+    <label>NOME:</label>
+      <input type="text" id="idnome" name="nome" placeholder="NOME" [(ngModel)]="selecionado.nome" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>CATEGORIA:</label>
+      <vic-many-to-one [(valor)]="selecionado.categoria" [service]="categoriaService" atributoLabel="nome" ></vic-many-to-one>
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="!(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>CATEGORIA:</label>
+      <input type="text" id="idcategoria" name="categoria" placeholder="CATEGORIA" [(ngModel)]="selecionado.categoria.nome" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>QUANTIDADE:</label>
+      <input type="text" id="idquantidade" name="quantidade" placeholder="QUANTIDADE" [(ngModel)]="selecionado.quantidade" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-6 text-left">
+        <button type="button" class="btn btn-danger" (click)="excluir()" [disabled]="isNew(selecionado)||!canDelete(selecionado)">
+          <i class="far fa-trash-alt"></i> Excluir
+        </button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <button type="button" class="btn btn-warning" (click)="cancelar()">
+          <i class="far fa-times-circle"></i> Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="salvar()"  [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" >
+          <i class="far fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{erro|json}}
+    </div>

@@ -12,19 +12,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages = {
-    "br.com.munif.openprojects.vicentebase", 
-    "br.com.munif.framework.vicente.application.victenancyfields", 
+    "br.com.munif.openprojects.vicentebase",
+    "br.com.munif.framework.vicente.application.victenancyfields",
     "br.com.munif.framework.vicente.api.errors",
     "br.com.munif.framework.vicente.security"
 })
 @EnableAutoConfiguration()
 @EntityScan(basePackages = {
-    "br.com.munif.framework.vicente.domain", 
+    "br.com.munif.framework.vicente.domain",
     "br.com.munif.openprojects.vicentebase.domain",
     "br.com.munif.framework.vicente.security"
 })
 @EnableJpaRepositories(basePackages = {
-    "br.com.munif.openprojects.vicentebase.repository", 
+    "br.com.munif.openprojects.vicentebase.repository",
     "br.com.munif.framework.vicente.application.victenancyfields",
     "br.com.munif.framework.vicente.security.repository"
 }, repositoryBaseClass = VicRepositoryImpl.class)

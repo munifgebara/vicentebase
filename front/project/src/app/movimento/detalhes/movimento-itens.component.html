@@ -1,0 +1,47 @@
+<!-- Arquivo gerado utilizando VICGERADOR por munif as 14/03/2018 06:38:28 -->
+<!-- Para não gerar o arquivo novamente coloque na primeira linha um comentário com  VICIGNORE , pode ser essa mesmo -->
+<div class="container" *ngIf="!editando">
+    <h2 class="float-left">ITENS {{itens.length}}</h2>
+        <button type="button" class="btn btn-success float-right" (click)="edita('new')" [disabled]="notNew(proprietario)&&!canUpdate(proprietario)">
+            <i class="far fa-file"></i> Novo</button>
+    <vic-tabela [dados]="criaVicReturnItens()" [colunas]="colunas" (acao)="edita($event)" [selecionaColunas]="false"></vic-tabela>
+</div>
+
+<div class="container" *ngIf="editando">
+    <h2>ITENS</h2>
+    <div class="row">
+  <div class="col-sm-12 margin-bottom" *ngIf="(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>PRODUTO:</label>
+      <vic-many-to-one [(valor)]="selecionado.produto" [service]="produtoService" atributoLabel="nome" ></vic-many-to-one>
+  </div>
+
+  <div class="col-sm-12 margin-bottom" *ngIf="!(isNew(selecionado)||canUpdate(selecionado))" >
+    <label>PRODUTO:</label>
+      <input type="text" id="idproduto" name="produto" placeholder="PRODUTO" [(ngModel)]="selecionado.produto.nome" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>VALORUNITARIO:</label>
+      <input type="text" id="idvalorUnitario" name="valorUnitario" placeholder="VALORUNITARIO" [(ngModel)]="selecionado.valorUnitario" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+  <div class="col-sm-12 margin-bottom">
+    <label>QUANTIDADE:</label>
+      <input type="text" id="idquantidade" name="quantidade" placeholder="QUANTIDADE" [(ngModel)]="selecionado.quantidade" class="form-control" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)" />
+  </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <button type="button" class="btn btn-danger" (click)="excluir()" [disabled]="isNew(selecionado)||!canDelete(selecionado)">
+               <i class="far fa-trash-alt"></i> Excluir</button>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-warning" (click)="cancelar()">
+                <i class="far fa-times-circle"></i> Cancelar</button>
+            <button type="button" class="btn btn-success" (click)="salvar()" [disabled]="notNew(selecionado)&&!canUpdate(selecionado)">
+                <i class="far fa-save"></i> Salvar</button>
+        </div>
+    </div>
+</div>
+

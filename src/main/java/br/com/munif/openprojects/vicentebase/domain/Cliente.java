@@ -6,6 +6,7 @@
 package br.com.munif.openprojects.vicentebase.domain;
 
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 import javax.persistence.Entity;
 import org.hibernate.envers.Audited;
 
@@ -21,6 +22,7 @@ public class Cliente extends BaseEntity {
     }
 
     public Cliente(String nome) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.nome = nome;
     }
 

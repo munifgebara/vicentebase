@@ -6,6 +6,7 @@
 package br.com.munif.openprojects.vicentebase.domain;
 
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 import javax.persistence.Entity;
 import org.hibernate.envers.Audited;
 
@@ -20,9 +21,11 @@ public class Categoria extends BaseEntity {
     private String nome;
 
     public Categoria() {
+        
     }
 
     public Categoria(String nome) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.nome = nome;
     }
 

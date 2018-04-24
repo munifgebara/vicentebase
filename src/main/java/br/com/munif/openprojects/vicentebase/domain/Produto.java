@@ -6,6 +6,7 @@
 package br.com.munif.openprojects.vicentebase.domain;
 
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import org.hibernate.envers.Audited;
@@ -29,6 +30,7 @@ public class Produto extends BaseEntity {
     }
 
     public Produto(String nome, Categoria categoria, Integer quantidade) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.nome = nome;
         this.categoria = categoria;
         this.quantidade = quantidade;

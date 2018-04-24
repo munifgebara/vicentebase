@@ -6,6 +6,7 @@
 package br.com.munif.openprojects.vicentebase.domain;
 
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -34,6 +35,7 @@ public class ItemMovimento extends BaseEntity {
     }
 
     public ItemMovimento(BigDecimal valorUnitario, Integer quantidade, Movimento movimento, Produto produto) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.valorUnitario = valorUnitario;
         this.quantidade = quantidade;
         this.movimento = movimento;

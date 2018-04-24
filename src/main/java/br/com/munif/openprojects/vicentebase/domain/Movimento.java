@@ -6,6 +6,7 @@
 package br.com.munif.openprojects.vicentebase.domain;
 
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -38,6 +39,7 @@ public class Movimento extends BaseEntity {
     }
 
     public Movimento(Cliente cliente) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.cliente = cliente;
         quando = ZonedDateTime.now();
     }

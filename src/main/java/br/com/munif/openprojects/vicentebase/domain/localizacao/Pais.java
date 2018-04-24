@@ -2,6 +2,7 @@ package br.com.munif.openprojects.vicentebase.domain.localizacao;
 
 import org.hibernate.envers.Audited;
 import br.com.munif.framework.vicente.domain.BaseEntity;
+import br.com.munif.framework.vicente.domain.BaseEntityHelper;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class Pais extends BaseEntity {
     }
 
     public Pais(String nome) {
+        BaseEntityHelper.setBaseEntityFields(this);
         this.nome = nome;
     }
 

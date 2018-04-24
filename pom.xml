@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <vicente.version>0.9.0-SNAPSHOT</vicente.version>
+        <vicente.version>0.10.0-SNAPSHOT</vicente.version>
         <hibernate.version>5.2.13.Final</hibernate.version>
     </properties>
 
